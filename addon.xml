@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.media.beamley"
+       name="Beamley"
+       version="0.1"
+       provider-name="Team clusterf">
+  <requires>
+    <import addon="xbmc.python" version="1.0"/>
+  </requires>
+  <extension point="xbmc.service"
+             library="main.py" start="login|startup">
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">"Does stuff"</summary>
+  </extension>
+</addon>
