@@ -32,13 +32,18 @@ feedid=parsed['sections'][0]['docs'][0]['entity']['id']
 print(feedid)
 
 zeedict = {"content-type":"application/json"}
+beamly="https://zgateway-i.zeebox.com/"
 login = "auth/1/login"
 payload = open(os.getenv("HOME") + "/login.json").read()
 r = requests.post(beamly+login, data=payload, headers=zeedict)
+print(r.text)
 
-userid = {"access_token":"q1V65RhE61C8AJk_x4xUoZb7ExmJDuBG-pvx2v-qkY4"}
+#userid = r.text[0]["access_token"]
+token = json.loads(r.text)['access_token']
+userid={}
+userid["access_token"] = token
 
 follow = "connector/2/me/feed/"
-beamlyzconnect="https://zconnect-i.zeebox.com/"
-r = requests.put(beamlyzconnect + follow + feedid, params=userid)
+beamly="https://zconnect-i.zeebox.com/"
+r = requests.put(beamly + follow + feedid, params=userid)
 
